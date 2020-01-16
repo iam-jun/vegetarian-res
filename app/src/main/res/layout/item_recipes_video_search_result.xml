@@ -19,6 +19,8 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_circle"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/imgProduct"
         app:layout_constraintEnd_toEndOf="@+id/imgProduct"
         app:layout_constraintStart_toStartOf="@+id/imgProduct"

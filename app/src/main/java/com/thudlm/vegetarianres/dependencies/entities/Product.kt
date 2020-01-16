@@ -39,10 +39,10 @@ class Product {
     var weight: Int = (1 until 9).random() * 100
 
     @ColumnInfo(name = "description")
-    var description: String? = "Very delicious"
+    var description: String? = null
 
     @ColumnInfo(name = "ingredients")
-    var ingredients: String? = "Blah blah blah blah blah"
+    var ingredients: String? = null
 
     @ColumnInfo(name = "calories")
     var calories: Int = (10 until 50).random() * 10

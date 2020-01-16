@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.thudlm.vegetarianres.R
 import com.thudlm.vegetarianres.dependencies.entities.Category
+import com.thudlm.vegetarianres.dependencies.entities.ExtraFood
 import com.thudlm.vegetarianres.dependencies.entities.Product
 import com.thudlm.vegetarianres.dependencies.presenter.category.CategoryPresenter
+import com.thudlm.vegetarianres.dependencies.presenter.extrafood.ExtraFoodPresenter
 import com.thudlm.vegetarianres.dependencies.presenter.product.ProductPresenter
 import com.thudlm.vegetarianres.utils.AppContants.CATEGORIES_DATA
 import com.thudlm.vegetarianres.utils.AppContants.COOK_METHOD
+import com.thudlm.vegetarianres.utils.AppContants.DESCRIPTION_DATA
+import com.thudlm.vegetarianres.utils.AppContants.EXTRAS_DATA
 import com.thudlm.vegetarianres.utils.AppContants.NAME_DATA
 import com.thudlm.vegetarianres.utils.AppContants.PRODUCT_IMAGES
 import com.thudlm.vegetarianres.utils.AppContants.RECIPE_VIDEO_URL
@@ -27,6 +31,8 @@ class SplashActivity : AppCompatActivity() {
     private val categoryPresenter: CategoryPresenter by viewModel()
 
     private val productPresenter: ProductPresenter by viewModel()
+
+    private val extraFoodPresenter: ExtraFoodPresenter by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +73,8 @@ class SplashActivity : AppCompatActivity() {
                 for (j in 0 until 20){
                     val product = Product()
                     product.categoryId = i+1
+                    product.description = DESCRIPTION_DATA[(0 until DESCRIPTION_DATA.size-1).random()]
+                    product.ingredients = NAME_DATA.joinToString(", ")
                     product.thumbnail = PRODUCT_IMAGES[(0 until PRODUCT_IMAGES.size-1).random()]
                     product.recipeVideoUrl = RECIPE_VIDEO_URL[(0 until RECIPE_VIDEO_URL.size-1).random()]
                     if(CATEGORIES_DATA[i] == "Drinks"){
@@ -76,6 +84,10 @@ class SplashActivity : AppCompatActivity() {
                     }
                     productPresenter.insert(product)
                 }
+            }
+            for (item in EXTRAS_DATA) {
+                val extraFood = ExtraFood(item, (1 until 9).random())
+                extraFoodPresenter.insert(extraFood)
             }
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             finish()

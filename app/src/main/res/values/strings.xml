@@ -17,4 +17,6 @@
     <string name="title_total_carbs">Total Carbs</string>
     <string name="title_recipe">RECIPES</string>
     <string name="title_recipe_video">VIDEO RECIPES</string>
+    <string name="title_extras">EXTRAS</string>
+    <string name="title_quantity">QUANTITY</string>
 </resources>

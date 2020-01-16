@@ -8,6 +8,15 @@ object AppContants {
 
     val COOK_METHOD = arrayOf("Grilled", "Fried", "Boiled", "Steamed")
 
+    val DESCRIPTION_DATA = arrayOf(
+        "Drizzle your falafel, avocado and cucumber salad with a kefir, lime, garlic, dill and mint dressing. It's a great way to use up any leftover homemade kefir!",
+        "Brighten up your day with this colourful beetroot salad bursting with citrusy flavours and creamy goat's cheese.",
+        "On the table in 15 minutes, this nutritious salad is packed with greens and tossed in fresh pesto.",
+        "Ready in 20 minutes, this vibrant vegan salad is packed with juicy watermelon and crunchy peanuts.",
+        "Pack plenty of crunch into this balanced vegetarian salad and sprinkle with a homemade nut and seed mix.",
+        "Make our vibrant veggie salad for a nutritious midweek meal ready in less than half an hour."
+    )
+
     val PRODUCT_IMAGES = arrayOf(
         "https://www.eatright.org/-/media/eatrightimages/food/nutrition/vegetarianandspecialdiets/vegetarianism-basic-facts-878734076.jpg",
         "https://bojongourmet.com/wp-content/uploads/2019/06/Vegetarian-Cobb-Salad-with-Grilled-Tofu-Coconut-Bacon-9.jpg",
@@ -33,7 +42,7 @@ object AppContants {
         ""
     )
 
-//    val extras = arrayOf("Cheese")
+    val EXTRAS_DATA = arrayOf("cheese", "cream", "more vegetables")
 
     const val ORDER_TITLE_LIST = "Order from $ MONEY - TIME min delivery"
     const val ORDER_TITLE_GRID = "TIME min - PEOPLE person"

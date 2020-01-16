@@ -9,14 +9,28 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings.PluginState
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.thudlm.vegetarianres.dependencies.entities.ExtraFood
+import com.thudlm.vegetarianres.dependencies.presenter.extrafood.ExtraFoodPresenter
 import com.thudlm.vegetarianres.dependencies.presenter.product.ProductPresenter
+import com.thudlm.vegetarianres.ui.adapter.ExtraAdapter
+import com.thudlm.vegetarianres.ui.callback.RecyclerViewItemClick
 import com.thudlm.vegetarianres.utils.GlideUtils
 import kotlinx.android.synthetic.main.activity_product_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class ProductDetailActivity : AppCompatActivity() {
+class ProductDetailActivity : AppCompatActivity(), RecyclerViewItemClick {
+
+    override fun onItemClick(position: Int) {
+        extraAdapter.selectedPosition = if(position == extraAdapter.selectedPosition) -1 else position
+        extraAdapter.notifyDataSetChanged()
+    }
 
     private val productPresenter: ProductPresenter by viewModel()
+    private val extraFoodPresenter: ExtraFoodPresenter by viewModel()
+    private val extras = ArrayList<ExtraFood>()
+    private lateinit var extraAdapter: ExtraAdapter
+    private var quantity = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,15 +40,34 @@ class ProductDetailActivity : AppCompatActivity() {
         initData()
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint("SetJavaScriptEnabled", "SetTextI18n")
     private fun initUI(){
         webView.settings.javaScriptEnabled = true
         webView.settings.pluginState = PluginState.ON
         webView.webChromeClient = WebChromeClient()
+        extraAdapter = ExtraAdapter(this, extras, -1, this)
+        rvExtras.layoutManager = LinearLayoutManager(this)
+        rvExtras.adapter = extraAdapter
+
+        btnAdd.setOnClickListener {
+            tvQuantity.text = "${++quantity} plates"
+        }
+
+        btnSub.setOnClickListener {
+            if(quantity > 1) tvQuantity.text = "${--quantity} plates"
+        }
     }
 
     @SuppressLint("SetTextI18n")
     private fun initData(){
+        extraFoodPresenter.loadExtraFoods()
+        extraFoodPresenter.extraFoods.observe(this, Observer {
+            extras.clear()
+            it?.let {
+                extras.addAll(it)
+                extraAdapter.notifyDataSetChanged()
+            }
+        })
         val productId = intent.getLongExtra("product_id", -1)
         if(productId > 0){
             productPresenter.getProductById(productId)

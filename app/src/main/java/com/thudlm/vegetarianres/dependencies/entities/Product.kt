@@ -18,7 +18,7 @@ import androidx.room.PrimaryKey
 class Product {
 
     @PrimaryKey(autoGenerate = true)
-    var id: Long = 0
+    var productId: Long = 0
 
     @ColumnInfo(name = "name")
     var name: String? = null
@@ -28,6 +28,9 @@ class Product {
 
     @ColumnInfo(name = "thumbnail")
     var thumbnail: String? = null
+
+    @ColumnInfo(name = "recipe_video_url")
+    var recipeVideoUrl: String? = null
 
     @ColumnInfo(name = "price")
     var price: Double = ((1 until 99).random()).toDouble()

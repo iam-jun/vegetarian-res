@@ -14,9 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".ui.activities.SearchProductActivity"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity
-            android:name=".ui.activities.ProductDetailActivity"
-            android:parentActivityName=".ui.activities.MainActivity" />
+            android:name=".ui.activities.ProductDetailActivity" />
         <activity
             android:name=".ui.activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

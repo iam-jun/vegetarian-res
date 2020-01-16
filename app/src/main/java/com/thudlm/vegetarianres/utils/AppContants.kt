@@ -11,10 +11,25 @@ object AppContants {
     val PRODUCT_IMAGES = arrayOf(
         "https://www.eatright.org/-/media/eatrightimages/food/nutrition/vegetarianandspecialdiets/vegetarianism-basic-facts-878734076.jpg",
         "https://bojongourmet.com/wp-content/uploads/2019/06/Vegetarian-Cobb-Salad-with-Grilled-Tofu-Coconut-Bacon-9.jpg",
+        "",
         "https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2017/05/mint-and-basil-griddled-peach-salad-1-440-400.jpg",
         "https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/caponata-pasta_1.jpg",
+        "",
         "https://i0.wp.com/www.liveeatlearn.com/wp-content/uploads/2019/07/caesar-salad-photo-8.jpg?zoom=2.625&ssl=1",
         "https://www.tasteefulrecipes.com/wp-content/uploads/2019/09/Cheesy-vegetarian-pasta-bake-3.jpg",
+        ""
+    )
+
+    val RECIPE_VIDEO_URL = arrayOf(
+        "https://www.youtube.com/embed/M8OGXmLTTiI?autoplay=1&vq=small",
+        "https://www.youtube.com/embed/XHfiWYcYpJk?autoplay=1&vq=small",
+        "",
+        "",
+        "https://www.youtube.com/embed/05DpAV5M_Lk?autoplay=1&vq=small",
+        "",
+        "https://www.youtube.com/embed/4oA8rB4rbqU?autoplay=1&vq=small",
+        "",
+        "https://www.youtube.com/embed/bqO-BZ7Pkv0?autoplay=1&vq=small",
         ""
     )
 

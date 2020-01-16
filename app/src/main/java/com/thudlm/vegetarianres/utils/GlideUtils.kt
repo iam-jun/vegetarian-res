@@ -11,19 +11,32 @@ import com.thudlm.vegetarianres.R
 
 object GlideUtils {
 
-    fun load(context: Context, uri: String, target: ImageView){
+    private val glideOptions = RequestOptions()
+        .error(R.drawable.ic_no_image)
+        .centerCrop()
+
+    private fun createLoading(context: Context): CircularProgressDrawable{
         val circularProgressDrawable = CircularProgressDrawable(context)
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f
         circularProgressDrawable.start()
+        return circularProgressDrawable
+    }
 
-        val glideOptions = RequestOptions()
-            .placeholder(circularProgressDrawable)
-            .error(R.drawable.ic_no_image)
-            .centerCrop()
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
+    fun load(context: Context, uri: String, target: ImageView){
+        Glide.with(context)
+            .load(uri)
+            .placeholder(createLoading(context))
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .apply(glideOptions).into(target)
+    }
 
-        Glide.with(context).load(uri).apply(glideOptions).into(target)
+    fun loadNoCache(context: Context, uri: String, target: ImageView){
+        Glide.with(context)
+            .load(uri)
+            .placeholder(createLoading(context))
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .apply(glideOptions).into(target)
     }
 
 }

@@ -57,14 +57,25 @@ class ProductPresenter(private val iProductInteractor: IProductInteractor): IPro
 
     @SuppressLint("CheckResult")
     override fun searchProduct(keyword: String) {
-        iProductInteractor.searchProduct(keyword)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                { value -> productsSearchResult
-                    .postValue(value) },
-                { error -> Log.d("RxJava", "Error getting info from interactor into presenter $error") }
-            )
+        productsSearchResult.postValue(null)
+        if(keyword.isNotBlank()) {
+            iProductInteractor.searchProduct(keyword)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    { value ->
+                        productsSearchResult
+                            .postValue(value)
+                    },
+                    { error ->
+                        Log.d(
+                            "RxJava",
+                            "Error getting info from interactor into presenter $error"
+                        )
+                    }
+                )
+
+        }
     }
 
 }

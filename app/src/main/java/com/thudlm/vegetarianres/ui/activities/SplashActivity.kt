@@ -13,6 +13,7 @@ import com.thudlm.vegetarianres.utils.AppContants.CATEGORIES_DATA
 import com.thudlm.vegetarianres.utils.AppContants.COOK_METHOD
 import com.thudlm.vegetarianres.utils.AppContants.NAME_DATA
 import com.thudlm.vegetarianres.utils.AppContants.PRODUCT_IMAGES
+import com.thudlm.vegetarianres.utils.AppContants.RECIPE_VIDEO_URL
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -63,14 +64,15 @@ class SplashActivity : AppCompatActivity() {
             for (i in CATEGORIES_DATA.indices) {
                 val category = Category(CATEGORIES_DATA[i])
                 categoryPresenter.insert(category)
-                for (j in NAME_DATA.indices){
+                for (j in 0 until 20){
                     val product = Product()
                     product.categoryId = i+1
                     product.thumbnail = PRODUCT_IMAGES[(0 until PRODUCT_IMAGES.size-1).random()]
+                    product.recipeVideoUrl = RECIPE_VIDEO_URL[(0 until RECIPE_VIDEO_URL.size-1).random()]
                     if(CATEGORIES_DATA[i] == "Drinks"){
-                        product.name = "${NAME_DATA[j]} juice"
+                        product.name = "${NAME_DATA[(0 until NAME_DATA.size-1).random()]} juice"
                     }else{
-                        product.name = "${COOK_METHOD[(0 until COOK_METHOD.size-1).random()]} ${NAME_DATA[j]} ${CATEGORIES_DATA[i].toLowerCase(Locale.ENGLISH)}"
+                        product.name = "${COOK_METHOD[(0 until COOK_METHOD.size-1).random()]} ${NAME_DATA[(0 until NAME_DATA.size-1).random()]} ${CATEGORIES_DATA[i].toLowerCase(Locale.ENGLISH)}"
                     }
                     productPresenter.insert(product)
                 }

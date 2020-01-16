@@ -21,6 +21,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="WebViewLayout" />
+
+
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"

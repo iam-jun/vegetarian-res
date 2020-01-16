@@ -58,6 +58,8 @@ dependencies {
     //rx
     implementation "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
     implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation 'com.jakewharton.rxbinding3:rxbinding:3.1.0'
+    implementation 'com.jakewharton.rxbinding3:rxbinding-core:3.1.0'
 
     // Room components
     implementation "androidx.room:room-runtime:$rootProject.roomVersion"

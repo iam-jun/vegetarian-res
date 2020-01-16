@@ -11,10 +11,10 @@ interface  ProductDao {
     @Query("SELECT * from product left join category as c on product.category_id = c.id where c.id = :categoryId")
     fun getProductsByCaterory(categoryId: Long): Single<List<ProductCategory>>
 
-    @Query("SELECT * from product where id = :id")
+    @Query("SELECT * from product where productId = :id")
     fun getProductById(id: Long): Single<Product>
 
-    @Query("SELECT * from product where name like :keyword")
+    @Query("SELECT * from product where name like :keyword limit 8")
     fun searchProduct(keyword: String): Single<List<Product>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
